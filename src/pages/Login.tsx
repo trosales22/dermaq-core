@@ -10,7 +10,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
-    const userId = 'admin@derma-q.ph'
+    const userId = 'admin@dermaq.ph'
     const password = 'Admin@123'
     const navigate = useNavigate();
 
@@ -27,7 +27,11 @@ const LoginPage: React.FC = () => {
         handleSubmit,
         formState: { errors },
     } = useForm<LoginData>({
-        resolver: zodResolver(loginSchema)
+        resolver: zodResolver(loginSchema),
+        defaultValues: {
+            user_id: userId,
+            password: password
+        }
     });
 
     const loginMutation = useLoginMutation({

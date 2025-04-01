@@ -7,10 +7,11 @@ import { ROLES } from "constants/roles";
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "pages/Login";
 import DashboardPage from "pages/Dashboard";
-import QueueReservationsPage from "pages/QueueReservations";
+import ClinicSessionPage from "pages/ClinicSession";
 import InventoryPage from "pages/Inventory";
 import ReportsPage from "pages/Reports";
 import SettingsPage from "pages/Settings";
+import ClinicSessionDetailPage from 'pages/ClinicSessionDetail';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
         
         <Route element={<ProtectedRoute allowedRoles={[ROLES.ADMIN]} />}>
           <Route path="/" element={<DashboardPage />} />
-          <Route path="/queue-reservations" element={<QueueReservationsPage />} />
+          <Route path="/clinic-sessions" element={<ClinicSessionPage />} />
+          <Route path="/clinic-sessions/:uuid" element={<ClinicSessionDetailPage />} />
           <Route path="/inventory" element={<InventoryPage />} />
           <Route path="/reports" element={<ReportsPage />} />
           <Route path="/settings" element={<SettingsPage />} />
