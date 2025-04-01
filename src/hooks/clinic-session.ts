@@ -23,7 +23,7 @@ export const useListClinicSession = ({ params, queryOptions }: ClinicSessionList
 
 export const useShowClinicSessionById = ({clinicSessionId, queryOptions}: ClinicSessionShowParams) => {
   return useQuery({
-    queryKey: ['BCLINIC_SESSION_SHOW', clinicSessionId],
+    queryKey: ['CLINIC_SESSION_SHOW', clinicSessionId],
     queryFn: () => fns.getClinicSessionById(clinicSessionId),
     ...queryOptions
   });

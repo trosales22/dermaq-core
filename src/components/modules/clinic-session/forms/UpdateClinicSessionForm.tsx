@@ -2,12 +2,13 @@ import { FC, useEffect, useState } from "react";
 import { format } from 'date-fns';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input, Button } from 'components/ui/components'
+import { Input, Button, Select } from 'components/ui/components'
 import { clinicSessionSchema, ClinicSessionFormData } from "schemas/clinicSessionSchema";
 import { toast } from 'react-toastify';
 import { useUpdateClinicSessionMutation } from "hooks/clinic-session";
 import { useQueryClient } from "@tanstack/react-query";
 import { DayPicker } from 'react-day-picker';
+import { clinicSessionStatuses } from "utils/clinicSessionData";
 
 interface UpdateClinicSessionFormProps {
   clinicSessionId: string | undefined;
@@ -52,7 +53,7 @@ const UpdateClinicSessionForm: FC<UpdateClinicSessionFormProps> = ({ clinicSessi
         });
 
         queryClient.invalidateQueries({ queryKey: ['CLINIC_SESSION_LIST'] });
-        queryClient.invalidateQueries({ queryKey: ['CLINIC_SESSION_SHOW'] });
+        queryClient.invalidateQueries({ queryKey: ['CLINIC_SESSION_SHOW', clinicSessionId] });
 
         onClose();
         reset();
@@ -125,6 +126,16 @@ const UpdateClinicSessionForm: FC<UpdateClinicSessionFormProps> = ({ clinicSessi
         requirementLabel={errors.end_time && errors.end_time.message} 
         requirementColor="text-red-500"
         {...register("end_time")}
+      />
+
+      <Select
+        {...register('status')}
+        legend="Status"
+        helperText="Required"
+        helperColor={errors.status ? 'text-red-500' : "text-black"}
+        defaultValue=""
+        options={clinicSessionStatuses}
+        className="w-full p-2 border border-gray-300 rounded"
       />
 
       <div className="md:col-span-3 flex justify-end">

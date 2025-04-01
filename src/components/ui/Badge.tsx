@@ -3,6 +3,7 @@ import React from 'react';
 interface BadgeProps {
   type?: 'primary' | 'secondary' | 'accent' | 'neutral' | 'info' | 'success' | 'warning' | 'error';
   label: string;
+  textSize?: 'xs' | 'sm' | 'medium' | 'lg' | 'xl';
 }
 
 const badgeTypes: Record<string, string> = {
@@ -16,10 +17,18 @@ const badgeTypes: Record<string, string> = {
     error: "badge-error"
 };
 
-const Badge: React.FC<BadgeProps> = ({ type = 'info', label }) => {
+const badgeTextSizes: Record<string, string> = {
+    xs: "text-xs",
+    sm: "text-sm",
+    medium: "text-medium",
+    lg: "text-large",
+    xl: 'text-xl'
+};
+
+const Badge: React.FC<BadgeProps> = ({ type = 'info', label, textSize = 'xs' }) => {
     return (
         <div className={`badge badge-soft ${badgeTypes[type] || "badge-info"}`}>
-            <span className='text-xs'>{label}</span>
+            <span className={`${badgeTextSizes[textSize]}`}>{label}</span>
         </div>
     );
 };
