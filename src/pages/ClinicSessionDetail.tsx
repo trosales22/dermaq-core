@@ -3,7 +3,7 @@ import Layout from "components/Layout";
 import CsDetailReservationSection from "components/modules/clinic-session/tabs/CsDetailReservationSection";
 import { Button, Breadcrumbs, Tabs, Modal, Badge } from "components/ui/components";
 import { useShowClinicSessionById, useDeleteClinicSessionMutation } from "hooks/clinic-session";
-import { Calendar, CalendarCheck, Clock, Pencil, Trash } from "lucide-react";
+import { Calendar, CalendarCheck, Clock, Hash, Pencil, Trash } from "lucide-react";
 import { useState } from "react";
 import { toast } from 'react-toastify';
 import { useNavigate, useParams } from "react-router-dom";
@@ -69,13 +69,21 @@ const ClinicSessionDetailPage: React.FC = () => {
 
                 <div>
                     <h1 className="text-2xl font-bold">
-                        #{detail?.attributes?.refno}&nbsp;
+                        {detail?.attributes?.title}&nbsp;
                         <Badge 
                             type={getBadgeColorByStatus(detail?.attributes?.status?.code)}
                             label={detail?.attributes?.status?.label || 'N/A'}
                             textSize="lg"
                         />
                     </h1>
+                    <div className="flex items-center gap-2">
+                        {detail?.attributes?.description}
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Hash className="w-5 h-5 text-gray-500" />
+                        <span className="font-medium">{detail?.attributes?.refno}</span>
+                    </div>
+
                     <div className="flex items-center gap-2">
                         <Calendar className="w-5 h-5 text-gray-500" />
                         <span className="font-medium">{detail?.attributes?.session_date}</span>

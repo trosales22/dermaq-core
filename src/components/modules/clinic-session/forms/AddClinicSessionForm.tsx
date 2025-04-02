@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { format } from 'date-fns';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input, Button } from 'components/ui/components'
+import { Input, Button, TextArea } from 'components/ui/components'
 import { clinicSessionSchema, ClinicSessionFormData } from "schemas/clinicSessionSchema";
 import { toast } from 'react-toastify';
 import { useCreateClinicSessionMutation } from "hooks/clinic-session";
@@ -60,6 +60,28 @@ const AddClinicSessionForm: FC<AddClinicSessionFormProps> = ({ onClose }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <Input 
+        label="Title" 
+        type="text" 
+        placeholder="Enter title" 
+        fieldset 
+        legend="Title" 
+        requirementLabel={errors.title && errors.title.message} 
+        requirementColor="text-red-500"
+        {...register("title")}
+      />
+
+      <TextArea 
+        className="md:col-span-2" 
+        label="Description" 
+        fieldset 
+        legend="Description" 
+        width="full" 
+        optionalLabel={errors.description ? errors.description.message : "Optional"} 
+        optionalLabelColor={errors.description ? 'text-red-500' : "text-black"} 
+        {...register("description")}
+      />
+
       <label className="block text-sm font-medium">Session Date</label>
       <button
         type="button"

@@ -63,7 +63,7 @@ const ClinicSessionPage = () => {
             {!isLoading && !isError && (
                 <>
                 <Table
-                    headers={["Reference #", "Session Date", "Time", "Status", "Created Date", "Actions"]}
+                    headers={["Reference #", "Title", "Description", "Session Date", "Time", "Status", "Created Date", "Actions"]}
                     headerColor="bg-gray-200"
                     borderColor="border-gray-300"
                     bordered
@@ -73,6 +73,8 @@ const ClinicSessionPage = () => {
                     {list.map((item: any) => {
                         return (<tr key={item.id}>
                             <td className="font-bold">{item?.attributes?.refno || 'N/A'}</td>
+                            <td className="font-medium">{item?.attributes?.title || 'N/A'}</td>
+                            <td className="font-medium">{item?.attributes?.description || 'N/A'}</td>
                             <td className="font-medium">{item?.attributes?.session_date || 'N/A'}</td>
                             <td className="font-medium">{`${item?.attributes?.formatted_start_time || ''} - ${item?.attributes?.formatted_end_time || ''}`}</td>
                             <td className="font-medium">
