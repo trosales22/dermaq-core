@@ -9,6 +9,7 @@ import { toast } from 'react-toastify';
 import { useNavigate, useParams } from "react-router-dom";
 import UpdateClinicSessionForm from "components/modules/clinic-session/forms/UpdateClinicSessionForm";
 import { getBadgeColorByStatus } from "utils";
+import CsDetailQueueMgmtSection from "components/modules/clinic-session/tabs/CsDetailQueueMgmtSection";
 
 const ClinicSessionDetailPage: React.FC = () => {
     const { uuid } = useParams();
@@ -28,7 +29,8 @@ const ClinicSessionDetailPage: React.FC = () => {
     ];
 
     const tabData = [
-        { label: 'Reservations', content: <CsDetailReservationSection clinicSessionId={uuid} /> }
+        { label: 'Reservations', content: <CsDetailReservationSection clinicSessionId={uuid} /> },
+        { label: 'Queue Management', content: <CsDetailQueueMgmtSection clinicSessionId={uuid} /> }
     ];
 
     const { mutate: deleteClinicSession, isPending: isDeleteClinicSessionLoading } = useDeleteClinicSessionMutation({
