@@ -51,7 +51,7 @@ const ProductsPage: React.FC = () => {
 
     const onShowDeleteConfirmation = (productId: string | undefined | null) => {
         setOpenDelete(true);
-        selectedProductId(productId);
+        setSelectedProductId(productId);
     };
 
     const onDeleteProductHandler = () => {
