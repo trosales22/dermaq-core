@@ -80,7 +80,7 @@ const ClinicSessionDetailPage: React.FC = () => {
 
                     <div className="flex items-center gap-2">
                         <Calendar className="w-5 h-5 text-gray-500" />
-                        <span className="font-medium">{detail?.attributes?.session_date}</span>
+                        <span className="font-medium">{detail?.attributes?.formatted_session_date}</span>
                     </div>
 
                     <div className="flex items-center gap-2">
