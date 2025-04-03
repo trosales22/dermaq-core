@@ -43,11 +43,11 @@ export const getRandomColor = (): string => {
 
 export const getBadgeColorByStatus = (status?: string): any => {
     switch (status) {
-        case "available": case "accepted": case "Yes": case "open": case "confirmed": case "completed":
+        case "available": case "accepted": case "Yes": case "open": case "confirmed": case "completed": case "active":
             return "success";
         case "pending": case "No":
             return "warning";
-        case "declined": case "closed": case "cancelled": case "unattended":
+        case "declined": case "closed": case "cancelled": case "unattended": case "inactive":
             return "error";
         default:
             return "neutral";

@@ -11,7 +11,6 @@ import Table from "./Table"
 import ChartCard from "./ChartCard"
 import StatCard from "./StatCard"
 import DrawerWithNavbar from "./DrawerWithNavbar"
-import Navbar from "./Navbar"
 import Sidebar from "./Sidebar"
 import Pagination from "./Pagination"
 import Tabs from "./Tabs"
@@ -32,7 +31,6 @@ export {
     ChartCard,
     StatCard,
     DrawerWithNavbar,
-    Navbar,
     Sidebar,
     Pagination,
     Tabs,

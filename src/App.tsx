@@ -12,6 +12,7 @@ import ProductsPage from "pages/Products";
 import ReportsPage from "pages/Reports";
 import SettingsPage from "pages/Settings";
 import ClinicSessionDetailPage from 'pages/ClinicSessionDetail';
+import StaffMgmtPage from 'pages/StaffMgmt';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/clinic-sessions/:uuid" element={<ClinicSessionDetailPage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/staff-management" element={<StaffMgmtPage />} />
           <Route path="/settings" element={<SettingsPage />} />
         </Route>
       </Routes>
