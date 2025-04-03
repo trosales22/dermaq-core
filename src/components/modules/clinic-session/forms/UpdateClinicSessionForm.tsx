@@ -44,15 +44,7 @@ const UpdateClinicSessionForm: FC<UpdateClinicSessionFormProps> = ({ clinicSessi
 
   const { mutate: updateClinicSession, isPending: isUpdateClinicSessionLoading } = useUpdateClinicSessionMutation({
     onSuccess: () => {
-        toast.success("Update clinic session successfully.", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          progress: undefined,
-          theme: "colored"
-        });
+        toast.success("Update clinic session successfully.");
 
         queryClient.invalidateQueries({ queryKey: ['CLINIC_SESSION_LIST'] });
         queryClient.invalidateQueries({ queryKey: ['CLINIC_SESSION_SHOW', clinicSessionId] });

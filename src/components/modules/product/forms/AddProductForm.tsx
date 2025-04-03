@@ -27,15 +27,7 @@ const AddProductForm: FC<AddProductFormProps> = ({ onClose }) => {
 
     const { mutate: createProduct, isPending: isCreateProductLoading } = useCreateProductMutation({
         onSuccess: () => {
-            toast.success("Created product successfully.", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                progress: undefined,
-                theme: "colored"
-            });
+            toast.success("Created product successfully.");
 
             queryClient.invalidateQueries({ queryKey: ['PRODUCT_LIST'] });
 

@@ -44,15 +44,7 @@ const UpdateProductForm: FC<UpdateProductFormProps> = ({ productId, onClose }) =
 
     const { mutate: updateProduct, isPending: isUpdateProductLoading } = useUpdateProductMutation({
         onSuccess: () => {
-            toast.success("Update product successfully.", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                progress: undefined,
-                theme: "colored"
-            });
+            toast.success("Update product successfully.");
 
             queryClient.invalidateQueries({ queryKey: ['PRODUCT_SHOW', productId] });
             queryClient.invalidateQueries({ queryKey: ['PRODUCT_LIST'] });

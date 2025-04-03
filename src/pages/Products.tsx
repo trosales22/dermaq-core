@@ -35,15 +35,7 @@ const ProductsPage = () => {
 
     const { mutate: deleteProduct, isPending: isDeleteProductLoading } = useDeleteProductMutation({
         onSuccess: () => {
-            toast.success("Deleted product successfully.", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                progress: undefined,
-                theme: "colored"
-            });
+            toast.success("Deleted product successfully.");
 
             queryClient.invalidateQueries({ queryKey: ['PRODUCT_LIST'] });
 

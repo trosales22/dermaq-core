@@ -31,15 +31,7 @@ const CsDetailQueueMgmtSection: React.FC<CsDetailQueueMgmtSectionProps> = ({ cli
 
   const { mutate: updateReservation, isPending: isUpdateReservationLoading } = useUpdateReservationMutation({
     onSuccess: () => {
-      toast.success("Update reservation successfully.", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        progress: undefined,
-        theme: "colored"
-      });
+      toast.success("Update reservation successfully.");
 
       if(currentQueueNo < lastQueueNo){
         setCurrentQueueNo(prev => prev + 1);

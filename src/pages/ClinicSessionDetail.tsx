@@ -35,15 +35,7 @@ const ClinicSessionDetailPage: React.FC = () => {
 
     const { mutate: deleteClinicSession, isPending: isDeleteClinicSessionLoading } = useDeleteClinicSessionMutation({
         onSuccess: () => {
-            toast.success("Deleted clinic session successfully.", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                progress: undefined,
-                theme: "colored"
-            });
+            toast.success("Deleted clinic session successfully.");
 
             queryClient.invalidateQueries({ queryKey: ['CLINIC_SESSION_LIST'] });
             queryClient.invalidateQueries({ queryKey: ['CLINIC_SESSION_SHOW'] });

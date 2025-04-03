@@ -34,15 +34,7 @@ const AddClinicSessionForm: FC<AddClinicSessionFormProps> = ({ onClose }) => {
 
   const { mutate: createClinicSession, isPending: isCreateClinicSessionLoading } = useCreateClinicSessionMutation({
     onSuccess: () => {
-        toast.success("Created clinic session successfully.", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          progress: undefined,
-          theme: "colored"
-        });
+        toast.success("Created clinic session successfully.");
 
         queryClient.invalidateQueries({ queryKey: ['CLINIC_SESSION_LIST'] });
 

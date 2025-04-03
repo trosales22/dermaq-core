@@ -24,15 +24,7 @@ const Layout = ({ children }: LayoutProps) => {
 
     const { mutate: logout, isPending: isLogoutLoading } = useLogoutMutation({
         onSuccess: () => {
-            toast.success("Successfully logged out.", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                progress: undefined,
-                theme: "colored"
-            });
+            toast.success("Successfully logged out.");
 
             Cookies.remove('auth_status');
             Cookies.remove('firstname');

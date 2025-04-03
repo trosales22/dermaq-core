@@ -36,15 +36,7 @@ const LoginPage: React.FC = () => {
 
     const loginMutation = useLoginMutation({
         onSuccess: (res) => {
-            toast.success("Successfully logged in.", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                progress: undefined,
-                theme: "colored"
-            });
+            toast.success("Successfully logged in.");
 
             Cookies.set('auth_status', 'authenticated');
             Cookies.set('token', res.data?.access_token?.token);
