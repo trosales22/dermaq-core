@@ -128,11 +128,13 @@ const ClinicSessionDetailPage: React.FC = () => {
                 headerColor="blue"
                 size="sm"
             >
-                <UpdateClinicSessionForm 
-                    clinicSessionId={uuid} 
-                    clinicSessionDetails={detail?.attributes} 
-                    onClose={() => setOpenEdit(false)} 
-                />
+                {openEdit && (
+                    <UpdateClinicSessionForm 
+                        clinicSessionId={uuid} 
+                        clinicSessionDetails={detail?.attributes} 
+                        onClose={() => setOpenEdit(false)} 
+                    />
+                )}
             </Modal>
 
             <Modal

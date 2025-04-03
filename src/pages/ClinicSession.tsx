@@ -126,7 +126,7 @@ const ClinicSessionPage = () => {
                 onClose={() => setOpenAdd(false)}
                 headerColor="blue"
             >
-                <AddClinicSessionForm onClose={() => setOpenAdd(false)} />
+                {openAdd && <AddClinicSessionForm onClose={() => setOpenAdd(false)} />}
             </Modal>
         </Layout>
     );
