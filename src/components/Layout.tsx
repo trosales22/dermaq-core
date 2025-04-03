@@ -62,7 +62,7 @@ const Layout = ({ children }: LayoutProps) => {
     const allMenuItems = [
         { label: "Dashboard", icon: <Home className="h-5 w-5" />, path: "/", roles: [ROLES.ADMIN] },
         { label: "Clinic Sessions", icon: <ClipboardList className="h-5 w-5" />, path: "/clinic-sessions", roles: [ROLES.ADMIN] }, 
-        { label: "Inventory", icon: <Box className="h-5 w-5" />, path: "/inventory", roles: [ROLES.ADMIN] },
+        { label: "Products", icon: <Box className="h-5 w-5" />, path: "/products", roles: [ROLES.ADMIN] },
         { label: "Reports", icon: <BarChart2 className="h-5 w-5" />, path: "/reports", roles: [ROLES.ADMIN] },
         { label: "Settings", icon: <Settings className="h-5 w-5" />, path: "/settings", roles: [ROLES.ADMIN] },
     ];

@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import LoginPage from "pages/Login";
 import DashboardPage from "pages/Dashboard";
 import ClinicSessionPage from "pages/ClinicSession";
-import InventoryPage from "pages/Inventory";
+import ProductsPage from "pages/Products";
 import ReportsPage from "pages/Reports";
 import SettingsPage from "pages/Settings";
 import ClinicSessionDetailPage from 'pages/ClinicSessionDetail';
@@ -23,7 +23,7 @@ function App() {
           <Route path="/" element={<DashboardPage />} />
           <Route path="/clinic-sessions" element={<ClinicSessionPage />} />
           <Route path="/clinic-sessions/:uuid" element={<ClinicSessionDetailPage />} />
-          <Route path="/inventory" element={<InventoryPage />} />
+          <Route path="/products" element={<ProductsPage />} />
           <Route path="/reports" element={<ReportsPage />} />
           <Route path="/settings" element={<SettingsPage />} />
         </Route>
