@@ -65,7 +65,6 @@ const SettingsPage = () => {
             toast.info("Password updated successfully.")
 
             updatePasswordReset()
-            queryClient.invalidateQueries({ queryKey: ['MY_PROFILE'] })
         },
         onError: () => {}
     });
