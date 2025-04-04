@@ -1,6 +1,10 @@
-import { useMutation, UseMutationOptions } from '@tanstack/react-query';
+import { useMutation, UseMutationOptions, useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { AxiosResponse } from 'axios';
 import * as fns from 'endpoints/auth';
+
+type MyProfileParams = {
+  queryOptions?: UseQueryOptions;
+};
 
 export const useLoginMutation = (mutationOptions?: UseMutationOptions<AxiosResponse<any>, unknown, any>) => {
   return useMutation({
@@ -14,6 +18,30 @@ export const useLogoutMutation = (mutationOptions?: UseMutationOptions<AxiosResp
   return useMutation({
     mutationKey: ['LOGOUT'],
     mutationFn: () => fns.logout(),
+    ...mutationOptions
+  });
+};
+
+export const useMyProfile = ({ queryOptions }: MyProfileParams) => {
+  return useQuery({
+    queryKey: ['MY_PROFILE'],
+    queryFn: () => fns.myProfile(),
+    ...queryOptions
+  });
+};
+
+export const useUpdateMyProfileMutation = (mutationOptions?: UseMutationOptions<AxiosResponse<any>, unknown, any>) => {
+  return useMutation({
+    mutationKey: ['UPDATE_MY_PROFILE'],
+    mutationFn: (payload) => fns.updateMyProfile(payload),
+    ...mutationOptions
+  });
+};
+
+export const useChangePasswordMutation = (mutationOptions?: UseMutationOptions<AxiosResponse<any>, unknown, any>) => {
+  return useMutation({
+    mutationKey: ['CHANGE_PASSWORD'],
+    mutationFn: (payload) => fns.changePassword(payload),
     ...mutationOptions
   });
 };
