@@ -1,16 +1,18 @@
 import { useState } from "react";
 import Layout from "components/Layout";
-import { Table, Button, Input, Pagination, Modal, Badge } from "components/ui/components";
+import { Table, Button, Input, Pagination, Modal, Badge, Select } from "components/ui/components";
 import { Clipboard, Globe } from "lucide-react";
 import AddClinicSessionForm from "components/modules/clinic-session/forms/AddClinicSessionForm";
 import { useListClinicSession } from "hooks/clinic-session";
 import { debounce } from "lodash";
 import { useNavigate } from "react-router-dom";
 import { getBadgeColorByStatus } from "utils";
+import { clinicSessionListFilterStatuses } from "utils/clinicSessionData";
 
 const ClinicSessionPage = () => {
     const siteUrl = import.meta.env.VITE_SITE_URL;
     const [search, setSearch] = useState("");
+    const [filteredStatus, setFilteredStatus] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(25);
     const [openAdd, setOpenAdd] = useState(false);
@@ -20,8 +22,12 @@ const ClinicSessionPage = () => {
         setSearch(e.target.value)
     }, 300);
 
+    const onStatusFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setFilteredStatus(e.target.value)
+    }
+
     const { data: response, isLoading, isError }: any = useListClinicSession({
-        params: { q: search, page: currentPage, limit: itemsPerPage }
+        params: { q: search, page: currentPage, limit: itemsPerPage, status: filteredStatus }
     })
 
     const list = response?.data?.data || []; 
@@ -36,13 +42,24 @@ const ClinicSessionPage = () => {
         <Layout>
             <h1 className="text-2xl font-bold pb-3">Clinic Sessions</h1>
 
-            <div className="flex justify-between items-center mb-4">
-                <Input
-                    type="text"
-                    placeholder="Search by reference number..."
-                    onChange={handleSearchChange}
-                    className="w-[300px]"
-                />
+            <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
+                <div className="flex items-center ">
+                    <Input
+                        type="text"
+                        placeholder="Search by reference # or title.."
+                        onChange={handleSearchChange}
+                        className="w-[300px]"
+                    />
+
+                    <Select
+                        inlineLegend={true}
+                        legend="Status"
+                        defaultValue=""
+                        options={clinicSessionListFilterStatuses}
+                        className="w-[150px] m p-2 border border-gray-300 rounded"
+                        onChange={onStatusFilterChange}
+                    />
+                </div>
                 <Button variant="primary" className="px-4 py-2" onClick={() => setOpenAdd(true)}>+ Add Clinic Session</Button>
             </div>
 

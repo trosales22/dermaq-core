@@ -4,6 +4,7 @@ interface ClinicSessionListParams {
     q?: string;
     page?: number;
     limit?: number;
+    status?: string;
 }
 
 export const getClinicSessionList = (params: ClinicSessionListParams) => axios.get('/api/v1/core/clinic_sessions', {
