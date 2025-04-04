@@ -47,8 +47,7 @@ const Layout = ({ children }: LayoutProps) => {
     }
 
     const headerNavItems = [
-        { label: "Profile" },
-        { label: "Settings" },
+        { label: "Settings", onClick: () => navigate('/settings') },
         { label: "Logout", onClick: onShowLogoutModal }
     ];
 
