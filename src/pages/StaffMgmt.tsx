@@ -182,7 +182,7 @@ const StaffMgmtPage: React.FC = () => {
                 <p>Are you sure you want to delete this staff?</p>
                 <div className="flex justify-end space-x-2 mt-4">
                     <Button variant="ghost" onClick={() => setOpenDelete(false)}>No</Button>
-                    <Button variant="danger" className="text-white" onClick={onDeleteStaffHandler}>{isDeleteStaffLoading ? 'Deleting..' : 'Delete'}</Button>
+                    <Button variant="danger" className="text-white" onClick={onDeleteStaffHandler}>{isDeleteStaffLoading ? 'Deleting..' : 'Yes'}</Button>
                 </div>
             </Modal>
         </Layout>

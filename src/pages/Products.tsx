@@ -182,7 +182,7 @@ const ProductsPage: React.FC = () => {
                 <p>Are you sure you want to delete this product?</p>
                 <div className="flex justify-end space-x-2 mt-4">
                     <Button variant="ghost" onClick={() => setOpenDelete(false)}>No</Button>
-                    <Button variant="danger" className="text-white" onClick={onDeleteProductHandler}>{isDeleteProductLoading ? 'Deleting..' : 'Delete'}</Button>
+                    <Button variant="danger" className="text-white" onClick={onDeleteProductHandler}>{isDeleteProductLoading ? 'Deleting..' : 'Yes'}</Button>
                 </div>
             </Modal>
         </Layout>
