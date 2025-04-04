@@ -8,12 +8,13 @@ interface SidebarItem {
 }
 
 interface SidebarProps {
+  bgColor?: string;
   items: SidebarItem[];
 }
 
-const Sidebar: FC<SidebarProps> = ({ items }) => {
+const Sidebar: FC<SidebarProps> = ({ bgColor='bg-base-200', items }) => {
   return (
-    <div className="h-full w-72 bg-base-200 shadow-lg fixed top-16 left-0">
+    <div className={`h-full w-72 ${bgColor} shadow-lg fixed top-16 left-0 z-5`}>
       <ul className="menu rounded-box w-full">
         {items.map((item, index) => (
           <li key={index} className="w-full mb-2">

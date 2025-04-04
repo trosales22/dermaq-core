@@ -88,7 +88,7 @@ const StaffMgmtPage: React.FC = () => {
                 <>
                 <Table
                     headers={["Photo", "Name", "Email", "Mobile Number", "Status", "Created Date", "Actions"]}
-                    headerColor="bg-gray-200"
+                    headerColor="bg-sky-100"
                     borderColor="border-gray-300"
                     bordered
                     rounded

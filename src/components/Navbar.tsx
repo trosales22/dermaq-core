@@ -8,6 +8,7 @@ interface DropdownItem {
 
 interface NavbarProps {
   appName: string;
+  bgColor?: string;
   avatarSrc: string;
   dropdownItems: DropdownItem[];
   indicatorContent?: ReactNode;
@@ -16,11 +17,11 @@ interface NavbarProps {
   role?: string;
 }
 
-const Navbar: FC<NavbarProps> = ({ appName, avatarSrc, dropdownItems, indicatorContent, indicatorBadge, userName, role }) => {
+const Navbar: FC<NavbarProps> = ({ appName, bgColor='bg-base-100', avatarSrc, dropdownItems, indicatorContent, indicatorBadge, userName, role }) => {
   return (
-    <div className="navbar bg-base-100 shadow-sm fixed top-0 left-0 right-0 z-50">
+    <div className={`navbar ${bgColor} shadow-sm fixed top-0 left-0 right-0 z-50`}>
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">{appName}</a>
+        <span className="text-xl font-bold ml-2">{appName}</span>
       </div>
       <div className="flex-none">
         {indicatorContent && (
@@ -43,7 +44,7 @@ const Navbar: FC<NavbarProps> = ({ appName, avatarSrc, dropdownItems, indicatorC
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="flex items-center space-x-3 p-2 cursor-pointer">
             <div className="w-10 rounded-full">
-              <img alt="User Avatar" src={avatarSrc} />
+              <img alt={userName} src={avatarSrc} />
             </div>
             <div className="flex flex-col text-left">
               {userName && <span className="text-m font-semibold text-black">{userName}</span>}

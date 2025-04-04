@@ -9,6 +9,7 @@ import { useLogoutMutation } from "hooks/auth";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import { Role, ROLES } from "constants/roles";
+import AppLogo from 'assets/images/app-logo.png'
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -71,16 +72,17 @@ const Layout = ({ children }: LayoutProps) => {
     return (
         <Wrapper>
             <Navbar 
-                appName="DermaQ" 
-                avatarSrc="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                appName="DermaQ Portal" 
+                bgColor="bg-sky-50"
+                avatarSrc={AppLogo}
                 dropdownItems={headerNavItems}
                 userName={userName}
                 role={formattedRole}
             />
 
             <div className="flex">
-                <Sidebar items={sidebarMenuItems} />
-                <div className="flex-1 p-6 ml-72 pt-18">
+                <Sidebar bgColor="bg-sky-100" items={sidebarMenuItems} />
+                <div className="flex-1 p-6 ml-72 pt-18 mt-2">
                     {children}
                 </div>
             </div>

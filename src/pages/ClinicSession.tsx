@@ -63,8 +63,8 @@ const ClinicSessionPage = () => {
             {!isLoading && !isError && (
                 <>
                 <Table
-                    headers={["Reference #", "Title", "Description", "Session Date", "Time", "Max Slot", "Status", "Created Date", "Actions"]}
-                    headerColor="bg-gray-200"
+                    headers={["Reference #", "Title", "Description", "Session Date", "Time", "Max Slot", "Reservations", "Remaining Slot", "Status", "Created Date", "Actions"]}
+                    headerColor="bg-sky-100"
                     borderColor="border-gray-300"
                     bordered
                     rounded
@@ -78,6 +78,12 @@ const ClinicSessionPage = () => {
                             <td className="font-medium">{item?.attributes?.formatted_session_date || 'N/A'}</td>
                             <td className="font-medium">{`${item?.attributes?.formatted_start_time || ''} - ${item?.attributes?.formatted_end_time || ''}`}</td>
                             <td className="font-medium">{item?.attributes?.max_slots || 0}</td>
+                            <td className="font-medium">
+                                <b>Confirmed:</b> {item?.attributes?.total_reservations?.confirmed || 0}<br/>
+                                <b>Completed:</b> {item?.attributes?.total_reservations?.completed || 0}<br/>
+                                <b>Unattended:</b> {item?.attributes?.total_reservations?.unattended || 0}
+                            </td>
+                            <td className="font-medium">{item?.attributes?.remaining_slots || 0}</td>
                             <td className="font-medium">
                                 <Badge type={getBadgeColorByStatus(item?.attributes?.status?.code)} label={item?.attributes?.status?.label || 'N/A'} />
                             </td>

@@ -21,7 +21,7 @@ const Table: FC<TableProps> = ({
 }) => {
   return (
     <div
-      className={`overflow-x-auto ${bordered ? `border ${borderColor}` : ""} ${
+      className={`${bordered ? `border ${borderColor}` : ""} ${
         rounded ? "rounded-box" : ""
       } bg-base-100 ${className}`}
     >

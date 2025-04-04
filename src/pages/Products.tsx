@@ -89,8 +89,8 @@ const ProductsPage: React.FC = () => {
             {!isLoading && !isError && (
                 <>
                 <Table
-                    headers={["Photo", "Gallery", "Name", "Description", "Price", "Quantity", "Created Date", "Actions"]}
-                    headerColor="bg-gray-200"
+                    headers={["Photo", "Name", "Description", "Price", "Quantity", "Created Date", "Actions"]}
+                    headerColor="bg-sky-100"
                     borderColor="border-gray-300"
                     bordered
                     rounded
@@ -103,17 +103,6 @@ const ProductsPage: React.FC = () => {
                                     <img src={item.attributes?.photo_url} alt={item?.attributes?.name} className="w-12 h-12 object-cover rounded" />
                                 ): (
                                     <img src={AppLogo} alt={item?.attributes?.name} className="w-12 h-12 object-cover rounded" />
-                                )}
-                            </td>
-                            <td className="font-bold">
-                                {(item?.attributes?.photo_gallery || []).length <= 0 ? (
-                                    <span className="font-medium">No photo gallery.</span>
-                                ): (
-                                    item?.attributes?.photo_gallery.map((photoUrl: string) => {
-                                        return (
-                                            <img src={photoUrl} alt={item?.attributes?.name} className="w-12 h-12 object-cover rounded" />
-                                        )
-                                    })
                                 )}
                             </td>
                             <td className="font-medium">
