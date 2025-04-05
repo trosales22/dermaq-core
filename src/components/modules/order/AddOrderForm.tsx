@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
-import { SearchableCombobox ,Button } from "components/ui/components";
+import { SearchableCombobox, Button, Alert } from "components/ui/components";
 import { useCreateOrderMutation } from "hooks/order";
 import { Trash2 } from "lucide-react";
 import { useListCustomerDataset, useListProductDataset } from "hooks/dataset";
@@ -22,6 +22,7 @@ const AddOrderForm: FC<AddOrderFormProps> = ({ onClose }) => {
     const [selectedCustomerId, setSelectedCustomerId] = useState<string | null>(null);
     const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
     const [orderItems, setOrderItems] = useState<{ product_id: string; quantity: number }[]>([]);
+    const [validationError, setValidationError] = useState<any>(null);
 
     const { mutate: createOrder, isPending } = useCreateOrderMutation({
         onSuccess: () => {
@@ -31,6 +32,9 @@ const AddOrderForm: FC<AddOrderFormProps> = ({ onClose }) => {
             setSelectedCustomerId(null)
             setSelectedProductId(null)
         },
+        onError: (res) => {
+            setValidationError(res)
+        }
     });
 
     const addProduct = (productId: string) => {
@@ -55,8 +59,10 @@ const AddOrderForm: FC<AddOrderFormProps> = ({ onClose }) => {
     };
 
     const onSubmitHandler = () => {
+        setValidationError(null)
+
         if (!selectedCustomerId || orderItems.length === 0) {
-            toast.error("Please select a customer and at least one product.");
+            setValidationError(`Please select a customer and atleast one product.`)
             return;
         }
 
@@ -159,6 +165,12 @@ const AddOrderForm: FC<AddOrderFormProps> = ({ onClose }) => {
                 {isPending ? "Creating..." : "Create Order"}
             </Button>
         </div>
+
+        {validationError && (
+            <div className="mt-2">
+                <Alert type="error" message={validationError} />
+            </div>
+        )}
         </>
     );
 };
