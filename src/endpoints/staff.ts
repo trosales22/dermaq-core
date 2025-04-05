@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-interface ProductListParams {
+interface StaffListParams {
     q?: string;
     page?: number;
     limit?: number;
 }
 
-export const getStaffList = (params: ProductListParams) => axios.get('/api/v1/core/staff', {
+export const getStaffList = (params: StaffListParams) => axios.get('/api/v1/core/staff', {
     params: params
 });
 
