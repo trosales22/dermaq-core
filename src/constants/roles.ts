@@ -1,5 +1,6 @@
-export type Role = "ADMIN";
+export type Role = "ADMIN" | "STAFF";
 
 export const ROLES: Record<Role, Role> = {
-  ADMIN: "ADMIN"
+  ADMIN: "ADMIN",
+  STAFF: "STAFF"
 };

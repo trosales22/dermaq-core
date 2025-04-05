@@ -1,4 +1,4 @@
-import { BarChart2, Box, ClipboardList, Home, Settings, Users } from "lucide-react";
+import { Box, ClipboardList, Home, Settings, ShoppingCart, User, Users } from "lucide-react";
 import Navbar from "./Navbar";
 import Sidebar from "./ui/Sidebar";
 import Wrapper from "./Wrapper";
@@ -52,12 +52,13 @@ const Layout = ({ children }: LayoutProps) => {
     ];
 
     const allMenuItems = [
-        { label: "Dashboard", icon: <Home className="h-5 w-5" />, path: "/", roles: [ROLES.ADMIN] },
-        { label: "Clinic Sessions", icon: <ClipboardList className="h-5 w-5" />, path: "/clinic-sessions", roles: [ROLES.ADMIN] }, 
-        { label: "Products", icon: <Box className="h-5 w-5" />, path: "/products", roles: [ROLES.ADMIN] },
-        { label: "Reports", icon: <BarChart2 className="h-5 w-5" />, path: "/reports", roles: [ROLES.ADMIN] },
+        { label: "Dashboard", icon: <Home className="h-5 w-5" />, path: "/", roles: [ROLES.ADMIN, ROLES.STAFF] },
+        { label: "Clinic Sessions", icon: <ClipboardList className="h-5 w-5" />, path: "/clinic-sessions", roles: [ROLES.ADMIN, ROLES.STAFF] }, 
+        { label: "Products", icon: <Box className="h-5 w-5" />, path: "/products", roles: [ROLES.ADMIN, ROLES.STAFF] },
+        { label: "Orders", icon: <ShoppingCart className="h-5 w-5" />, path: "/orders", roles: [ROLES.ADMIN, ROLES.STAFF] },
+        { label: "Customers", icon: <User className="h-5 w-5" />, path: "/customers", roles: [ROLES.ADMIN, ROLES.STAFF] },
         { label: "Staff Management", icon: <Users className="h-5 w-5" />, path: "/staff-management", roles: [ROLES.ADMIN] },
-        { label: "Settings", icon: <Settings className="h-5 w-5" />, path: "/settings", roles: [ROLES.ADMIN] },
+        { label: "Settings", icon: <Settings className="h-5 w-5" />, path: "/settings", roles: [ROLES.ADMIN, ROLES.STAFF] },
     ];
 
     const sidebarMenuItems = allMenuItems.filter(item => item.roles.includes(userRole));

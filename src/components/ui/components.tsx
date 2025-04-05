@@ -18,6 +18,7 @@ import Breadcrumbs from "./Breadcrumbs"
 import Alert from "./Alert"
 import Badge from "./Badge"
 import Toggle from "./Toggle"
+import SearchableCombobox from "./SearchableCombobox"
 
 export {
     Input,
@@ -37,5 +38,6 @@ export {
     Breadcrumbs,
     Alert,
     Badge,
-    Toggle
+    Toggle,
+    SearchableCombobox
 }
